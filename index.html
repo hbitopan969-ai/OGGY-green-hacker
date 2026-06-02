@@ -1,0 +1,381 @@
+<!DOCTYPE html><html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OGGY GREEN HACKER</title><style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Consolas,monospace;
+}
+
+body{
+background:#000;
+color:#00ff66;
+overflow:hidden;
+}
+
+#matrix{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+display:none;
+}
+
+#countdown{
+position:fixed;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:#000;
+color:#00ff66;
+font-size:45px;
+text-align:center;
+text-shadow:0 0 20px #00ff66;
+}
+
+.warning{
+font-size:20px;
+margin-top:20px;
+}
+
+.flash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#fff;
+display:none;
+z-index:9999;
+}
+
+#intro{
+display:none;
+position:fixed;
+width:100%;
+height:100%;
+background:#000;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+z-index:1000;
+}
+
+.introText{
+white-space:pre-wrap;
+font-size:20px;
+text-shadow:0 0 15px #00ff66;
+}
+
+#main{
+display:none;
+height:100vh;
+overflow-y:auto;
+text-align:center;
+padding:20px;
+}
+
+.lock{
+font-size:90px;
+margin-top:20px;
+text-shadow:0 0 30px #00ff66;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+50%{transform:scale(1.1);}
+}
+
+.title{
+font-size:40px;
+margin-top:10px;
+text-shadow:
+0 0 10px #00ff66,
+0 0 25px #00ff66,
+0 0 50px #00ff66;
+}
+
+.btn{
+padding:15px 30px;
+font-size:18px;
+border:none;
+margin-top:25px;
+background:#00ff66;
+color:#000;
+cursor:pointer;
+border-radius:10px;
+box-shadow:0 0 20px #00ff66;
+}
+
+.typing{
+max-width:900px;
+margin:40px auto;
+font-size:22px;
+line-height:1.8;
+white-space:pre-wrap;
+}
+
+.footer{
+font-size:24px;
+margin-bottom:50px;
+text-shadow:0 0 20px #00ff66;
+}
+
+@keyframes shake{
+0%{transform:translate(0);}
+25%{transform:translate(8px);}
+50%{transform:translate(-8px);}
+75%{transform:translate(8px);}
+100%{transform:translate(0);}
+}
+
+.shake{
+animation:shake .3s linear infinite;
+}
+
+@media(max-width:700px){
+
+.title{
+font-size:28px;
+}
+
+.typing{
+font-size:18px;
+}
+
+.lock{
+font-size:70px;
+}
+
+}
+</style></head><body><div id="countdown">
+<div id="randomNum">93</div>
+<div class="warning" id="warning">
+SYSTEM ERROR...
+</div>
+</div><div class="flash" id="flash"></div><div id="intro">
+<div class="introText">████████████████████████
+
+SYSTEM INITIALIZING...
+
+ACCESSING SECURE DATABASE
+
+USER DETECTED :
+☬『ＯᎶᎶᎽ』☬
+
+AUTHENTICATION SUCCESSFUL
+
+LOADING FINAL MESSAGE...
+
+PLEASE WAIT...
+
+████████████████████████
+
+</div>
+</div><canvas id="matrix"></canvas>
+
+<audio id="music" loop>
+<source src="https://files.catbox.moe/fbs3r3.mp3" type="audio/mpeg">
+</audio><div id="main"><div class="lock">🔒</div><h1 class="title">
+☬『ＯᎶᎶᎽ』☬
+<br>
+GREEN HACKER GOODBYE
+</h1><button class="btn" onclick="startSystem()">
+▶ ENTER SYSTEM
+</button><div class="typing" id="typing"></div><div class="footer">
+💚 GOOD BYE FIGHTERS 💚
+</div></div><script>
+
+const warnings=[
+"SYSTEM ERROR...",
+"DATABASE CORRUPTED...",
+"UNKNOWN ACCESS DETECTED...",
+"FIREWALL FAILURE...",
+"SECURITY BREACH..."
+];
+
+let timer=30;
+
+const countdown=setInterval(()=>{
+
+document.getElementById("randomNum").innerHTML=
+Math.floor(Math.random()*99);
+
+document.getElementById("warning").innerHTML=
+warnings[Math.floor(Math.random()*warnings.length)];
+
+timer--;
+
+if(timer<=0){
+
+clearInterval(countdown);
+
+document.body.classList.add("shake");
+
+let flash=document.getElementById("flash");
+
+flash.style.display="block";
+
+setTimeout(()=>{
+
+flash.style.display="none";
+
+document.body.classList.remove("shake");
+
+document.getElementById("countdown").style.display="none";
+
+document.getElementById("intro").style.display="flex";
+
+setTimeout(()=>{
+
+document.getElementById("intro").style.display="none";
+
+document.getElementById("main").style.display="block";
+
+document.getElementById("matrix").style.display="block";
+
+},5000);
+
+},700);
+
+}
+
+},300);
+
+function startSystem(){
+
+document.querySelector(".btn").style.display="none";
+
+document.getElementById("music").play();
+
+typeWriter();
+
+}
+
+const text=`SYSTEM ACCESS GRANTED...
+
+User : ☬『ＯᎶᎶᎽ』☬
+
+Main WhatsApp Group Fighting chhod raha hoon...
+
+Shayad hamesha ke liye.
+
+Mere sabhi fighter dosto ko dil se thank you.
+
+Aur mere favourite dosto...
+
+Tum sab hamesha khush rehna. 🤧
+
+Agar kabhi kisi ka dil dukhaya ho...
+
+To mujhe maaf kar dena.
+
+Har fight...
+Har yaad...
+Har hasi...
+Har dosti...
+
+Mere saath rahegi.
+
+Ab main ja raha hoon...
+
+Lekin tum sabko kabhi nahi bhoolunga.
+
+Stay Strong.
+Stay Happy.
+
+CONNECTION TERMINATED...
+
+USER OFFLINE...
+
+☬『ＯᎶᎶᎽ』☬ HAS LEFT THE NETWORK
+
+SYSTEM SHUTDOWN...`;
+
+let i=0;
+
+function typeWriter(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML=
+text.substring(0,i)+"█";
+
+i++;
+
+setTimeout(typeWriter,35);
+
+}
+
+}
+
+/* MATRIX */
+
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const chars=
+"01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&@";
+
+const size=16;
+const columns=canvas.width/size;
+
+const drops=[];
+
+for(let x=0;x<columns;x++){
+drops[x]=1;
+}
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff66";
+ctx.font=size+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+
+const txt=
+chars[Math.floor(Math.random()*chars.length)];
+
+ctx.fillText(
+txt,
+i*size,
+drops[i]*size
+);
+
+if(
+drops[i]*size>canvas.height &&
+Math.random()>0.975
+){
+drops[i]=0;
+}
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,35);
+
+window.onresize=()=>{
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+};
+
+</script></body>
+</html>
